@@ -1,0 +1,1 @@
+- Fix high CPU usage with MQTT callbacks

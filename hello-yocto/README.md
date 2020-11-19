@@ -10,9 +10,19 @@ yarn install
 yarn serve
 ```
 
+### Compiles and hot-reloads for electron
+```
+yarn electron:serve
+```
+
 ### Compiles and minifies for production
 ```
 yarn build
+```
+
+### Compiles and minifies for production for electron
+```
+yarn electron:build
 ```
 
 ### Lints and fixes files
