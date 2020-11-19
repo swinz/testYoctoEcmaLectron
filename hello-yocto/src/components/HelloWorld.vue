@@ -6,6 +6,10 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
+
+    <h3>Yocto Module Inventory</h3>
+    <ul id="module_list"></ul>
+
     <h3>Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
@@ -40,6 +44,78 @@ export default defineComponent({
     msg: String,
   },
 });
+
+
+/* eslint-disable */
+declare var YAPI: any;
+
+const yocto = require("yoctolib-es2017/yocto_api.js");
+const { ipcRenderer } = require('electron')
+let serial_list: any[] = [];
+
+function refresh_module_list()
+{
+    console.log('  Yocto: refresh_module_list called');
+    let ul = document.getElementById('module_list');
+    if (ul) {
+      ul.innerHTML = '';
+      for (let i = 0; i < serial_list.length; i++) {
+          let li = document.createElement("li");
+          li.appendChild(document.createTextNode(serial_list[i]));
+          ul.appendChild(li);
+      } 
+    }
+}
+
+async function deviceArrival(module: { get_serialNumber: () => any; })
+{
+    console.log('  Yocto: deviceArrival called');
+    let serial = await module.get_serialNumber();
+    serial_list[serial_list.length] = serial;
+    refresh_module_list();
+
+}
+
+async function deviceRemoval(module: { get_serialNumber: () => any; })
+{
+    console.log('  Yocto: deviceRemoval called');
+    let serial = await module.get_serialNumber();
+    serial_list = serial_list.filter(item => item !== serial);
+    refresh_module_list();
+}
+
+function handleHotPlug()
+{
+    console.log('  Yocto: handleHotPlug called');
+    YAPI.SetTimeout(handleHotPlug, 1000);
+}
+
+async function startDemo()
+{
+    console.log('startDemo called');
+    await YAPI.LogUnhandledPromiseRejections();
+
+    console.log('startDemo: registering hub')
+    try {
+      // Setup the API to use the VirtualHub on local machine
+      await YAPI.RegisterHub('localhost');
+    } catch (errmsg) {
+        console.log('  registering hub error:', errmsg)
+        ipcRenderer.send('open-error-dialog', errmsg.msg);
+        return;
+    }
+    console.log('startDemo: registering arrival callback')
+    await YAPI.RegisterDeviceArrivalCallback(deviceArrival);
+    console.log('startDemo: registering removal callback')
+    await YAPI.RegisterDeviceRemovalCallback(deviceRemoval);
+    console.log('startDemo: handling hot plug call')
+    handleHotPlug();
+}
+
+startDemo();
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

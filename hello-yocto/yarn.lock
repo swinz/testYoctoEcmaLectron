@@ -10061,6 +10061,13 @@ yauzl@^2.10.0:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
 
+yoctolib-es2017@^1.10.42060:
+  version "1.10.42060"
+  resolved "https://registry.yarnpkg.com/yoctolib-es2017/-/yoctolib-es2017-1.10.42060.tgz#e3ecde5e7d1dc78a8121ba429c087510bd595e89"
+  integrity sha512-/WN7KTRXPZdMBy+GFxVJFcqtT1rUziObj9d96pUbex2mjX53PlKMUjIZHC6wcNq7NNIr4tporZpwook7OrzgtQ==
+  dependencies:
+    ws "^6.2.1"
+
 yorkie@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yorkie/-/yorkie-2.0.0.tgz#92411912d435214e12c51c2ae1093e54b6bb83d9"

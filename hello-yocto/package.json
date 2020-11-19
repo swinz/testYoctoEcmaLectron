@@ -14,7 +14,8 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "yoctolib-es2017": "^1.10.42060"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
