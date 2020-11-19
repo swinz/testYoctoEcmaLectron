@@ -150,3 +150,6 @@ yarn-error.log
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vuejs,vue,yarn,typescript
+
+#Electron-builder output
+/dist_electron
