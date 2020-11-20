@@ -52,6 +52,7 @@ declare var YAPI: any;
 const yocto = require("yoctolib-es2017/yocto_api.js");
 const { ipcRenderer } = require('electron')
 let serial_list: any[] = [];
+YAPI._isNodeJS = false;
 
 function refresh_module_list()
 {
@@ -86,7 +87,7 @@ async function deviceRemoval(module: { get_serialNumber: () => any; })
 
 function handleHotPlug()
 {
-    console.log('  Yocto: handleHotPlug called');
+    // console.log('  Yocto: handleHotPlug called');
     YAPI.SetTimeout(handleHotPlug, 1000);
 }
 
