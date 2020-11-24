@@ -113,7 +113,14 @@ async function startDemo()
     handleHotPlug();
 }
 
-startDemo();
+console.log('----->', ipcRenderer.sendSync('sync-ping', 'ping'));
+ipcRenderer.on('async-ping-reply', (event:any, arg:any) => {
+  console.log('async-ping-reply:', arg) 
+});
+
+ipcRenderer.send('async-ping', 'ping')
+
+// startDemo();
 
 
 

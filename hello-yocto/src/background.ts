@@ -1,10 +1,11 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 import { startVirtualHub } from "./util/yocto";
+import { startDemo } from "./util/yoctolib";
 
 
 // Scheme must be registered before the app is ready
@@ -36,6 +37,17 @@ async function createWindow() {
   }
 }
 
+ipcMain.on('async-ping', (event, arg) => {
+  console.log('async-ping received:', arg);
+  event.reply('async-ping-reply', 'pong')
+});
+
+ipcMain.on('sync-ping', (event, arg) => {
+  console.log('sync-ping received:', arg);
+  event.returnValue = 'pong'
+})
+
+
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
@@ -64,7 +76,16 @@ app.on('ready', async () => {
     }
   }
   startVirtualHub();
+
+  console.log('NODE VERSION:', process.version);
+  try {
+    startDemo();
+  } catch(e) {
+    console.log(e);
+  }
+
   createWindow()
+
 })
 
 // Exit cleanly on request from parent process in development mode.

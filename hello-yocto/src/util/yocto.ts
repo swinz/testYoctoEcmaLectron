@@ -56,5 +56,5 @@ export function startVirtualHub(): void {
       }
     }
   );
-  console.log("startVirtualHub started process:", vhub_process);
+  console.log("startVirtualHub started process:", !!vhub_process);
 }
