@@ -1,13 +1,4 @@
 import { YAPI, YErrorMsg, YModule } from 'yoctolib-esm/yocto_api.mjs';
-// import { YAPI, YErrorMsg, YModule } from './yoctolib-esm/yocto_api.mjs';
-// import { YAPI, YErrorMsg, YModule } from 'yoctolib-es2017/yocto_api.js';
-
-
-// declare let YAPI: any;
-// declare let YErrorMsg: any;
-// declare let YModule: any;
-// /* eslint-disable */
-// const yocto = require("yoctolib-es2017/yocto_api.js");
 
 async function refresh()
 {

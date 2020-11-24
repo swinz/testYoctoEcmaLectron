@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, ipcMain } from 'electron'
+import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -36,17 +36,6 @@ async function createWindow() {
     win.loadURL('app://./index.html')
   }
 }
-
-ipcMain.on('async-ping', (event, arg) => {
-  console.log('async-ping received:', arg);
-  event.reply('async-ping-reply', 'pong')
-});
-
-ipcMain.on('sync-ping', (event, arg) => {
-  console.log('sync-ping received:', arg);
-  event.returnValue = 'pong'
-})
-
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
