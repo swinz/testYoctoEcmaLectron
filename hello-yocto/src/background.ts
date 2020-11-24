@@ -5,6 +5,7 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 import { startVirtualHub } from "./util/yocto";
+import { startDemo } from "./util/yoctoutil2017";
 
 
 // Scheme must be registered before the app is ready
@@ -64,7 +65,8 @@ app.on('ready', async () => {
     }
   }
   startVirtualHub();
-  createWindow()
+  createWindow();
+  startDemo();
 })
 
 // Exit cleanly on request from parent process in development mode.

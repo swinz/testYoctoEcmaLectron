@@ -1,0 +1,1 @@
+declare module "yoctolib-es2017/yocto_api.js";
