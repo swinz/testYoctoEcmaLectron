@@ -61,6 +61,7 @@ app.on('ready', async () => {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
+  console.log('NODE VERSION:', process.version)
   createWindow()
   startDemo()
 })
