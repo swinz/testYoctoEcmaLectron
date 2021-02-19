@@ -10,7 +10,7 @@ yarn install
 yarn serve
 ```
 
-### Compiles and hot-reloads for electron
+### Compiles and hot-reloads for electron 
 ```
 yarn electron:serve
 ```
