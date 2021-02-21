@@ -3,7 +3,7 @@ name: CI_semantic_release
 on:
   push:
     branches: 
-      - semantic_release
+      - semantic-release
     paths-ignore:
       - "**/package.json"
       - "**/*.md"
@@ -37,7 +37,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: semantic_release
+        ref: semantic-release
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
