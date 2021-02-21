@@ -42,6 +42,6 @@
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.5"
   },
   "release": {
-    "branches": ["master", "semantic-release"]
-  }
+      "branches": ["master", "semantic-release"]
+    }    
 }
