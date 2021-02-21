@@ -1,7 +1,6 @@
 name: CI_semantic_release
 
 on:
-  # pull_request:
   push:
     branches: 
       - semantic_release
