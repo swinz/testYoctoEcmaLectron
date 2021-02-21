@@ -20,8 +20,6 @@ jobs:
     # Fetch the latest commit
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        ref: semantic_release
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
