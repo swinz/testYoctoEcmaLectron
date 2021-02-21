@@ -3,7 +3,8 @@ name: CI_semantic_release
 on:
   # pull_request:
   push:
-    branches: [ semantic_release ]
+    branches: 
+      - semantic_release
     paths-ignore:
       - "**/package.json"
       - "**/*.md"
@@ -30,12 +31,14 @@ jobs:
 
   release:
     # Only release on push to master
-    if: github.event_name == 'push' && github.ref == 'refs/heads/semantic_release'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/semantic_release'
     runs-on: ubuntu-latest
     # needs: [install]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        ref: semantic_release
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
