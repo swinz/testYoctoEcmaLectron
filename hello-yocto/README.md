@@ -1,4 +1,4 @@
-# hello-yocto  
+# hello-yocto
 
 ## Project setup
 ```
