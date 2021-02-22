@@ -6,7 +6,8 @@ module.exports = {
     //   ["@semantic-release/npm", { 
     //     "tarballDir": "release"
     //   }],
-      ["@semantic-release/npm", { "pkgRoot": "hello-yocto" }],
+    "@semantic-release/npm",
+    //   ["@semantic-release/npm", { "pkgRoot": "hello-yocto" }],
     //   ["@semantic-release/github", {
     //     "assets": "release/*.tgz"
     //   }],
